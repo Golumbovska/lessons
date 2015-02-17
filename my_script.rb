@@ -68,6 +68,7 @@ driver.find_element(id:'version_name').send_keys 'ksenofontiha'
 driver.find_element(:xpath, ".//*[@id='version_status']/option[3]").click
 driver.find_element(name:'commit').click
 
+#последний пункт в разработке
 
 
 
