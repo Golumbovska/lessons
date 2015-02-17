@@ -37,14 +37,14 @@ driver.find_element(name: 'continue').click
 
 driver.find_element(id: 'project_quick_jump_box').click
 driver.find_element(:xpath, ".//*[@id='project_quick_jump_box']/option[3]").click
-driver.find_element(:xpath, ".//*[@id='project_quick_jump_box']/option[3]").click #не кликает на проект
+driver.find_element(:xpath, ".//*[@id='project_quick_jump_box']/option[3]").click #не кликает на проект,скорее всего ошибка в xpass
 
 #следующее пишу без проверки
 driver.find_element(class:'settings').click
 driver.find_element(id: 'tab-members').click
 driver.find_element(id: 'principal_serch').send_keys 'golumbovska'
-driver.find_element(:xpath, ".//*[@checked='membership[user_ids][]']/value[92948]").click
-driver.find_element(:xpath, ".//*[@checked='membership[role_ids][]']/value[4]").click
+driver.find_element(:xpath, ".//*[@checked='membership[user_ids][]']/value[92948]").click #крайне не уверенна в работоспособности
+driver.find_element(:xpath, ".//*[@checked='membership[role_ids][]']/value[4]").click #тут тоже и в последующих xpass
 driver.find_element(id:'member-add-submit').click
 
 driver.find_element(class: 'icon-edit').click
@@ -60,6 +60,15 @@ driver.find_element(name:'commit').click
 
 driver.find_element(class: 'icon-add').click
 driver.find_element(id:'version_name').send_keys 'ksenofontiha'
+driver.find_element(:xpath, ".//*[@id='version_status']/option[2]").click
+driver.find_element(name:'commit').click
+
+driver.find_element(class: 'icon-add').click
+driver.find_element(id:'version_name').send_keys 'ksenofontiha'
+driver.find_element(:xpath, ".//*[@id='version_status']/option[3]").click
+driver.find_element(name:'commit').click
+
+
 
 
 
