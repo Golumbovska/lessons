@@ -36,7 +36,7 @@ driver.find_element(id: 'project_identifier').send_keys 'marynago14'
 driver.find_element(name: 'continue').click
 
 driver.find_element(id: 'project_quick_jump_box').click
-driver.find_element(:xpath, ".//*[@id='project_quick_jump_box']/option[3]").click #все равно не кликает
+driver.find_element(:xpath, ".//*[@id='project_quick_jump_box']/option[3]").click #все равно не кликает,айнене
 
 #еще не исправила
 driver.find_element(class:'settings').click
