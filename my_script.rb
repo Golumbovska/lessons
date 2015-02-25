@@ -66,29 +66,32 @@ driver.find_element(:xpath, "//label[.=' Manager']/input").click
 driver.find_element(id:'member-add-submit').click
 
 sleep 3
-driver.find_element(css: '.icon-edit:first').click #не работает
+driver.find_element(css: 'a.icon.icon-edit').click #не работает
 driver.find_element(:xpath, "(//input[@name='membership[role_ids][]'])[1]" ).click
 driver.find_element(:xpath, "(//input[@name='membership[role_ids][]'])[2]" ).click
-driver.find_element(class: 'commit').click
+driver.find_element(class: 'small').click
 
 
 driver.find_element(id: 'tab-versions').click
 driver.find_element(class: 'icon-add').click
 driver.find_element(id:'version_name').send_keys 'ksenofont'
+driver.find_element(:xpath, ".//*[@id='version_status']/option[1]").click
+driver.find_element(name:'commit').click
+
+driver.find_element(class: 'icon-add').click
+driver.find_element(id:'version_name').send_keys 'ksenofontiha'
 driver.find_element(:xpath, ".//*[@id='version_status']/option[2]").click
 driver.find_element(name:'commit').click
 
 driver.find_element(class: 'icon-add').click
-driver.find_element(id:'version_name').send_keys 'ksenofontiha'
+driver.find_element(id:'version_name').send_keys 'ksenofontiha1'
+sleep 2
 driver.find_element(:xpath, ".//*[@id='version_status']/option[3]").click
 driver.find_element(name:'commit').click
 
-driver.find_element(class: 'icon-add').click
-driver.find_element(id:'version_name').send_keys 'ksenofontiha'
-driver.find_element(:xpath, ".//*[@id='version_status']/option[4]").click
-driver.find_element(name:'commit').click
+#все работает,работа кипит дальше
 
-#последний пункт в разработке
+
 
 
 
