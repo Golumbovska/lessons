@@ -4,14 +4,10 @@ load 'test_utils.rb'
 driver = Selenium::WebDriver.for :firefox
 driver.get 'http://demo.redmine.org'
 
-def set_user_name(driver, login)
+def set_user_name(driver, login1)
   driver.find_element(class: 'register').click
-  driver.find_element(id: 'user_login').send_keys login
-  driver.find_element(id: 'user_password').send_keys 'golumbovska1234'
-  driver.find_element(id: 'user_password_confirmation').send_keys 'golumbovska1234'
-  driver.find_element(id: 'user_firstname').send_keys 'Nastya'
-  driver.find_element(id: 'user_lastname').send_keys 'Golumbovska'
-  driver.find_element(id: 'user_mail').send_keys login + '@mail.com'
+  driver.find_elements(css: 'input[id^="user_"]').each{|user| user.send_keys login1}
+  driver.find_element(id: 'user_mail').send_keys '@mail.com'
   driver.find_element(name: 'commit').click
   driver.find_element(class: 'logout').click
 
@@ -19,22 +15,18 @@ end
 
 def register(driver, login)
   driver.find_element(class: 'register').click
-  driver.find_element(id: 'user_login').send_keys login
-  driver.find_element(id: 'user_password').send_keys 'golumbovska1234'
-  driver.find_element(id: 'user_password_confirmation').send_keys 'golumbovska1234'
-  driver.find_element(id: 'user_firstname').send_keys 'Nastya'
-  driver.find_element(id: 'user_lastname').send_keys 'Golumbovska'
-  driver.find_element(id: 'user_mail').send_keys login + '@mail.com'
+  driver.find_elements(css: 'input[id^="user_"]').each{|us| us.send_keys login}
+  driver.find_element(id: 'user_mail').send_keys '@mail.com'
   driver.find_element(name: 'commit').click
 end
 
 
 
-def login_2(driver, login)
+def login_2(driver, login1)
  driver.find_element(class: 'logout').click
  driver.find_element(class: 'login').click
- driver.find_element(id:'username').send_keys login
- driver.find_element(id:'password').send_keys 'golumbovska1234'
+ driver.find_element(id:'username').send_keys login1
+ driver.find_element(id:'password').send_keys login1
  driver.find_element(name:'login').click
  end
  login1 = 'golumbovska' + random_string(8)
@@ -44,17 +36,17 @@ def login_2(driver, login)
  register(driver, login2)
  login_2(driver, login1)
 
-def change_password(driver)
+def change_password(driver, login1)
  driver.find_element(class:'my-account').click
  driver.find_element(class: 'icon-passwd').click
  sleep 2
- driver.find_element(id: 'password').send_keys 'golumbovska1234'
+ driver.find_element(id: 'password').send_keys login1
  driver.find_element(id: 'new_password').send_keys '1234golumbovska'
  driver.find_element(id:'new_password_confirmation').send_keys '1234golumbovska'
  driver.find_element(name: 'commit').click
 end
 
- change_password(driver)
+ change_password(driver, login1)
 
 def create_project (driver)
  driver.find_element(class: 'projects').click
