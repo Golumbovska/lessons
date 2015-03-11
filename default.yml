@@ -1,0 +1,8 @@
+
+registerpage:
+ login: ~name
+ password: ~password
+ confirmation: ~password
+ name: ~name
+ last_name:  ~last_name
+ email: ~email_address
